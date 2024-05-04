@@ -26,6 +26,7 @@ export const buildspecBabblebox = {
         "build" : {
             "commands": [
                     'cd babblebox',
+                    'ls -l',
                     'pwd',
                     'echo Building image...',
                     'DOCKER_REGISTRY="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com" IMAGE_TAG="${IMAGE_TAG}" docker compose -f codebuild.yml build',
