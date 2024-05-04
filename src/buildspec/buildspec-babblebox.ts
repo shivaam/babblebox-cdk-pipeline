@@ -50,8 +50,10 @@ export const buildspecBabblebox = {
                 'git config --global user.email "test.run@gmail.com"',
                 'git config --global user.name "CodeBuild"',
                 'git commit -m "updated image tag to ${IMAGE_TAG}"',
-                'git checkout -b production-local-1',
-                'git push -f',
+                'git checkout production-local', // Checkout the production-local branch
+                'git merge development@1.0 --strategy-option=theirs --no-commit --no-ff', // Merge development@1.0 into production-local, favoring changes from development@1.0
+                'git commit -m "Merged development@1.0 into production-local with image tag - ${IMAGE_TAG}"', // Commit the merge
+                'git push -f origin production-local' // Force push the production-local branch
             ],
         },
     },
