@@ -28,13 +28,13 @@ export const buildspecBabblebox = {
                     'cd babblebox',
                     'pwd',
                     'echo Building image...',
-                    'DOCKER_REGISTRY="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com" IMAGE_TAG="${IMAGE_TAG}" docker compose -f production.yml build',
+                    'DOCKER_REGISTRY="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com" IMAGE_TAG="${IMAGE_TAG}" docker compose -f codebuild.yml build',
                 ],
         },
         "post_build" : {
             "commands": [
                 'echo Pushing the Docker images...',
-                'DOCKER_REGISTRY="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com" IMAGE_TAG="${IMAGE_TAG}" docker compose -f production.yml push',
+                'DOCKER_REGISTRY="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com" IMAGE_TAG="${IMAGE_TAG}" docker compose -f codebuild.yml push',
                 'echo Build completed',
                 'mkdir tmpbabblebox',
                 'cd tmpbabblebox',
